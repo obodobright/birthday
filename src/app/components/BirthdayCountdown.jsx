@@ -130,12 +130,12 @@ const BirthdayCountdown = ({ onBirthday }) => {
             <h2 className="md:text-3xl font-bold text-pink-600 dark:text-pink-300 mb-4 font-serif">
               🎉 Happy Birthday! 🎉
             </h2>
-            <button
+            {/* <button
               onClick={() => setIsBirthday(!isBirthday)}
               className="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg absolute bottom-3 right-2"
             >
               Test
-            </button>
+            </button> */}
             {!showSurprise ? (
               <button
                 onClick={handleSurpriseClick}
@@ -205,12 +205,12 @@ const BirthdayCountdown = ({ onBirthday }) => {
           <div className="text-sm text-pink-600 dark:text-pink-400">Seconds</div>
         </div>
       </div>
-      <button
+      {/* <button
         onClick={() => setIsBirthday(!isBirthday)}
         className="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg absolute bottom-3 right-2"
       >
         Test
-      </button>
+      </button> */}
     </div>
   );
 };
