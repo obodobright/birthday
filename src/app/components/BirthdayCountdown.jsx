@@ -16,6 +16,8 @@ const BirthdayCountdown = ({ onBirthday }) => {
   const [showSlideshow, setShowSlideshow] = useState(false);
   const [showGiftInfo, setShowGiftInfo] = useState(false);
   const [isBirthdayPassed, setIsBirthdayPassed] = useState(false);
+  const [selectedSong, setSelectedSong] = useState(null);
+  const [showSongSelection, setShowSongSelection] = useState(false);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -60,7 +62,11 @@ const BirthdayCountdown = ({ onBirthday }) => {
   }, [onBirthday]);
 
   const handleSurpriseClick = () => {
-    setShowSlideshow(true);
+    if (isBirthday) {
+      setShowSongSelection(true);
+    } else {
+      setShowSlideshow(true);
+    }
   };
 
   const handleCloseSlideshow = () => {
@@ -70,6 +76,12 @@ const BirthdayCountdown = ({ onBirthday }) => {
 
   const handleGiftClick = () => {
     setShowGiftInfo(true);
+  };
+
+  const handleSongSelect = (song) => {
+    setSelectedSong(song);
+    setShowSlideshow(true);
+    setShowSongSelection(false);
   };
 
   // If birthday has passed, only show gift collection
@@ -106,7 +118,11 @@ const BirthdayCountdown = ({ onBirthday }) => {
   if (isBirthday) {
     return (
       <>
-        <BirthdayMusic isPlaying={showSlideshow} />
+        <BirthdayMusic
+          isPlaying={showSlideshow}
+          onSongSelect={handleSongSelect}
+          showSelection={showSongSelection}
+        />
         {showSlideshow ? (
           <BirthdaySlideshow onClose={handleCloseSlideshow} />
         ) : (
@@ -114,6 +130,12 @@ const BirthdayCountdown = ({ onBirthday }) => {
             <h2 className="md:text-3xl font-bold text-pink-600 dark:text-pink-300 mb-4 font-serif">
               🎉 Happy Birthday! 🎉
             </h2>
+            <button
+              onClick={() => setIsBirthday(!isBirthday)}
+              className="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg absolute bottom-3 right-2"
+            >
+              Test
+            </button>
             {!showSurprise ? (
               <button
                 onClick={handleSurpriseClick}
@@ -123,15 +145,16 @@ const BirthdayCountdown = ({ onBirthday }) => {
               </button>
             ) : (
               <div className="text-center animate-fade-in">
-                <p className="text-xl text-pink-700 dark:text-pink-200 mb-2 font-serif">
-                  Wishing you an amazing day filled with joy!
+                <p className="text-xl text-pink-700 leading-relaxed dark:text-pink-200 mb-2 font-serif">
+                  Wishing you an amazing day filled with joy!On this special day, I just want to
+                  remind you how incredibly amazing you are. Your beauty shines inside and out, and
+                  your kindness, intelligence, and warmth make the world a better place. ✨ May
+                  today be filled with love, laughter, and everything that makes you smile. You
+                  deserve all the happiness in the world, not just today but always. Keep shining,
+                  keep being the wonderful person you are, and never stop chasing your dreams!
+                  Wishing you a year ahead full of love, success, and unforgettable moments. 💕🎂🎁
+                  <br /> Happy Birthday, beautiful! 🥳🎈
                 </p>
-                <button
-                  className="absolute bottom-0 right-2 bg-red-500 text-white px-4 py-2 rounded-full"
-                  onClick={() => setIsBirthday(!isBirthday)}
-                >
-                  Test
-                </button>
 
                 {!showGiftInfo ? (
                   <button
@@ -182,14 +205,12 @@ const BirthdayCountdown = ({ onBirthday }) => {
           <div className="text-sm text-pink-600 dark:text-pink-400">Seconds</div>
         </div>
       </div>
-      <div>
-        <button
-          className="absolute bottom-3 right-2 bg-red-500 text-white px-4 py-2 rounded-full"
-          onClick={() => setIsBirthday(!isBirthday)}
-        >
-          Test
-        </button>
-      </div>
+      <button
+        onClick={() => setIsBirthday(!isBirthday)}
+        className="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg absolute bottom-3 right-2"
+      >
+        Test
+      </button>
     </div>
   );
 };
