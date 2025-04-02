@@ -23,7 +23,7 @@ const BirthdayCountdown = ({ onBirthday }) => {
     const calculateTimeLeft = () => {
       const today = new Date();
       const currentYear = today.getFullYear();
-      const birthday = new Date(currentYear, 3, 3); // April 4th (month is 0-based)
+      const birthday = new Date(currentYear, 3, 3); // April 3rd (month is 0-based)
       const birthdayEnd = new Date(birthday);
       birthdayEnd.setHours(24, 0, 0, 0);
 
@@ -37,8 +37,8 @@ const BirthdayCountdown = ({ onBirthday }) => {
         return;
       }
 
-      // If within 24 hours of birthday
-      if (hoursUntilBirthday <= 24 && hoursUntilBirthday >= 0) {
+      // If it's the birthday (April 3rd)
+      if (today.getDate() === 3 && today.getMonth() === 3) {
         setIsBirthday(true);
         onBirthday?.();
         return;
@@ -205,12 +205,16 @@ const BirthdayCountdown = ({ onBirthday }) => {
           <div className="text-sm text-pink-600 dark:text-pink-400">Seconds</div>
         </div>
       </div>
-      {/* <button
-        onClick={() => setIsBirthday(!isBirthday)}
-        className="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg absolute bottom-3 right-2"
-      >
-        Test
-      </button> */}
+      <p className="text-sm  text-center text-pink-600 dark:text-pink-400">
+        Your birthday surprise can only be reviewed on your birthday
+      </p>
+      <p className="text-sm absolute bottom-2 right-3 text-pink-600 dark:text-pink-400">
+        {new Date().toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        })}
+      </p>
     </div>
   );
 };
