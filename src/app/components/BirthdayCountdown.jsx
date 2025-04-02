@@ -206,7 +206,8 @@ const BirthdayCountdown = ({ onBirthday }) => {
         </div>
       </div>
       <p className="text-sm  text-center text-pink-600 dark:text-pink-400">
-        Your birthday surprise can only be reviewed on your birthday
+        A little secret's waiting just for you, but it won't be reveal itself until your beautiful
+        day arrives!
       </p>
       <p className="text-sm absolute bottom-2 right-3 text-pink-600 dark:text-pink-400">
         {new Date().toLocaleDateString("en-US", {
