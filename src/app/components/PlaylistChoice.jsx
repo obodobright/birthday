@@ -5,20 +5,25 @@ import React from 'react';
 // TODO: Customize this list with 3-5 specific songs
 const songs = [
   {
-    title: "Kese (Dance) - Wizkid",
-    url: "https://ik.imagekit.io/hydekcjmz/Wizkid-Kese-Dance-(TrendyBeatz.com).mp3?updatedAt=1743431167121",
+    title: "Kizz Daniel - Sooner",
+    url: "https://ik.imagekit.io/hydekcjmz/cherryl/Kizz-Daniel-Sooner-(TrendyBeatz.com).mp3?updatedAt=1744201363924"
   },
   {
-    title: "Love My Baby - Wizkid",
-    url: "https://ik.imagekit.io/hydekcjmz/Wizkid-Love-My-Baby-_TrendyBeatz.com_.mp3?updatedAt=1743431552604",
+    title: "Davido ft Faze - Kante",
+    url: "https://ik.imagekit.io/hydekcjmz/cherryl/Davido-Ft-Fave-Kante-(TrendyBeatz.com).mp3?updatedAt=1744201361615"
   },
   {
-    title: "Essence - Wizkid ft. Tems",
-    url: "https://ik.imagekit.io/hydekcjmz/Tems-Ft-Wizkid-Essence-_TrendyBeatz.com_.mp3?updatedAt=1743504275611",
+    title: "KCEE - Ojapiano",
+    url: "https://ik.imagekit.io/hydekcjmz/cherryl/Kcee-Ojapiano-(TrendyBeatz.com).mp3?updatedAt=1744201362932"
   },
   {
-    title: "Gidi Girl - Wizkid",
-    url: "https://ik.imagekit.io/hydekcjmz/Wizkid-Gidi-Girl-_TrendyBeatz.com_.mp3?updatedAt=1743504272558",
+    title: "Omah Lay - Holy Ghost",
+    url: "https://ik.imagekit.io/hydekcjmz/cherryl/Omah-Lay-Holy-Ghost-(TrendyBeatz.com).mp3?updatedAt=1744201358621",
+  },
+
+  {
+    title: "Burna Boy- Kilometer",
+    url:"https://ik.imagekit.io/hydekcjmz/cherryl/Burna-Boy-Kilometre-(TrendyBeatz.com).mp3?updatedAt=1744201586965"
   },
   // Add more songs if needed, or trim down to 3-5
 ];
