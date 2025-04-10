@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 // Target birthday date (April 3rd of the current year)
 // NOTE: Months are 0-indexed in JavaScript Date (0 = January, 3 = April)
 const BIRTHDAY_MONTH = 3; // April
-const BIRTHDAY_DAY = 9;
+const BIRTHDAY_DAY = 10;
 
 const CountdownDisplay = ({ onBirthdayReached }) => {
   const [timeLeft, setTimeLeft] = useState(null);
@@ -13,7 +13,7 @@ const CountdownDisplay = ({ onBirthdayReached }) => {
 
   useEffect(() => {
     // Ensure this runs only on the client after hydration
-    setIsClient(true); 
+    setIsClient(true);
 
     const calculateTimeLeft = () => {
       const now = new Date();
@@ -70,19 +70,23 @@ const CountdownDisplay = ({ onBirthdayReached }) => {
   // Avoid rendering countdown on server / during hydration mismatch
   if (!isClient || timeLeft === null) {
     return (
-       <div className="text-center text-xl text-pink-600 dark:text-pink-300 animate-pulse">
-            Loading countdown...
-       </div>
+      <div className="text-center text-xl text-pink-600 dark:text-pink-300 animate-pulse">
+        Loading countdown...
+      </div>
     ); // Or a loading spinner
   }
 
   // Check if countdown has hit zero (should be handled by interval clear, but belts and braces)
-   if (timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0) {
-     // This state should ideally be managed by the parent via onBirthdayReached
-     // But we prevent rendering the countdown numbers if it hits zero here.
-     return null; 
-   }
-
+  if (
+    timeLeft.days === 0 &&
+    timeLeft.hours === 0 &&
+    timeLeft.minutes === 0 &&
+    timeLeft.seconds === 0
+  ) {
+    // This state should ideally be managed by the parent via onBirthdayReached
+    // But we prevent rendering the countdown numbers if it hits zero here.
+    return null;
+  }
 
   return (
     <div className="flex flex-col items-center justify-center text-center p-4 animate-fade-in">
@@ -96,19 +100,27 @@ const CountdownDisplay = ({ onBirthdayReached }) => {
       {/* Countdown Timer */}
       <div className="grid grid-cols-4 gap-2 md:gap-4 mb-6 text-pink-500 dark:text-pink-400">
         <div className="text-center p-2 md:p-3 bg-white/50 dark:bg-pink-900/50 rounded-lg shadow">
-          <div className="text-3xl md:text-5xl font-bold">{String(timeLeft.days).padStart(2, '0')}</div>
+          <div className="text-3xl md:text-5xl font-bold">
+            {String(timeLeft.days).padStart(2, "0")}
+          </div>
           <div className="text-xs md:text-sm uppercase tracking-wider">Days</div>
         </div>
         <div className="text-center p-2 md:p-3 bg-white/50 dark:bg-pink-900/50 rounded-lg shadow">
-          <div className="text-3xl md:text-5xl font-bold">{String(timeLeft.hours).padStart(2, '0')}</div>
+          <div className="text-3xl md:text-5xl font-bold">
+            {String(timeLeft.hours).padStart(2, "0")}
+          </div>
           <div className="text-xs md:text-sm uppercase tracking-wider">Hours</div>
         </div>
         <div className="text-center p-2 md:p-3 bg-white/50 dark:bg-pink-900/50 rounded-lg shadow">
-          <div className="text-3xl md:text-5xl font-bold">{String(timeLeft.minutes).padStart(2, '0')}</div>
+          <div className="text-3xl md:text-5xl font-bold">
+            {String(timeLeft.minutes).padStart(2, "0")}
+          </div>
           <div className="text-xs md:text-sm uppercase tracking-wider">Minutes</div>
         </div>
         <div className="text-center p-2 md:p-3 bg-white/50 dark:bg-pink-900/50 rounded-lg shadow">
-          <div className="text-3xl md:text-5xl font-bold">{String(timeLeft.seconds).padStart(2, '0')}</div>
+          <div className="text-3xl md:text-5xl font-bold">
+            {String(timeLeft.seconds).padStart(2, "0")}
+          </div>
           <div className="text-xs md:text-sm uppercase tracking-wider">Seconds</div>
         </div>
       </div>
@@ -123,4 +135,4 @@ const CountdownDisplay = ({ onBirthdayReached }) => {
   );
 };
 
-export default CountdownDisplay; 
+export default CountdownDisplay;
